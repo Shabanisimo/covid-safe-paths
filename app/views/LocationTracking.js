@@ -41,6 +41,7 @@ import { checkIntersect } from '../helpers/Intersect';
 import languages from '../locales/languages';
 import BackgroundTaskServices from '../services/BackgroundTaskService';
 import LocationServices from '../services/LocationService';
+import NetInfoService from '../services/NetInfoService';
 
 const MAYO_COVID_URL = 'https://www.mayoclinic.org/coronavirus-covid-19';
 
@@ -176,7 +177,8 @@ class LocationTracking extends Component {
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange);
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-    // refresh state if settings have changed
+    NetInfoService.start();
+    // refresh state if settings have changed\
     this.unsubscribe = this.props.navigation.addListener('focus', () => {
       this.checkIfUserAtRisk();
     });
@@ -201,6 +203,7 @@ class LocationTracking extends Component {
     AppState.removeEventListener('change', this.handleAppStateChange);
     clearInterval(this.state.timer_intersect);
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+    NetInfoService.stop();
     this.unsubscribe();
   }
 
