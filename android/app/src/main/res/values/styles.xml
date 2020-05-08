@@ -17,4 +17,7 @@
         <item name="colorPrimaryDark">@color/ic_launcher_background</item>
     </style>
 
+    <style name="AppTheme" parent="ZendeskSdkTheme.Light">
+        <item name="colorPrimary">#FF6240</item>
+    </style>
 </resources>

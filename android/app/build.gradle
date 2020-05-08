@@ -204,6 +204,7 @@ android {
 dependencies {
     // loading html files
     compile project(':react-native-local-resource')
+    compile project(':react-native-zendesk-support')
     implementation project(':react-native-reanimated')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -240,6 +241,7 @@ allprojects {
         jcenter()
         maven {
             url "https://maven.google.com"
+            url 'https://zendesk.jfrog.io/zendesk/repo'
         }
     }
 }

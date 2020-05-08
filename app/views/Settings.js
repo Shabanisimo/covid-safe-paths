@@ -2,6 +2,7 @@ import styled, { css } from '@emotion/native';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackHandler, ScrollView, View } from 'react-native';
+import ZendeskSupport from 'react-native-zendesk-support';
 
 import checkmarkIcon from '../assets/svgs/checkmarkIcon';
 import languagesIcon from '../assets/svgs/languagesIcon';
@@ -23,6 +24,17 @@ import LocationServices from '../services/LocationService';
 import { GoogleMapsImport } from './Settings/GoogleMapsImport';
 import { SettingsItem as Item } from './Settings/SettingsItem';
 
+const config = {
+  appId: '0ef33e627de8aff024367c3714271ec869715d34f047d299',
+  clientId: 'mobile_sdk_client_1cf66aba2e16382da33b',
+  zendeskUrl: 'https://safepaths.zendesk.com',
+};
+
+const identity = {
+  customerEmail: 'foo@bar.com',
+  customerName: 'Foo Bar',
+};
+
 export const SettingsScreen = ({ navigation }) => {
   const { t } = useTranslation();
   const [isLogging, setIsLogging] = useState(undefined);
@@ -33,6 +45,11 @@ export const SettingsScreen = ({ navigation }) => {
   const backToMain = () => {
     navigation.goBack();
   };
+
+  useEffect(() => {
+    ZendeskSupport.initialize(config);
+    ZendeskSupport.setupIdentity(identity);
+  });
 
   useEffect(() => {
     const handleBackPress = () => {
@@ -123,6 +140,13 @@ export const SettingsScreen = ({ navigation }) => {
             label={t('share.title')}
             description={t('share.subtitle')}
             onPress={() => navigation.navigate('ExportScreen')}
+          />
+          <Item
+            label={'Zendesk test'}
+            description={'Meow'}
+            onPress={() => {
+              ZendeskSupport.showHelpCenter();
+            }}
             last
           />
         </Section>
