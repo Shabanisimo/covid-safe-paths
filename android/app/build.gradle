@@ -204,7 +204,8 @@ android {
 dependencies {
     // loading html files
     compile project(':react-native-local-resource')
-    compile project(':react-native-zendesk-support')
+    // compile project(':react-native-zendesk-support')
+    implementation group: 'com.zendesk', name: 'support', version: '3.0.3'
     implementation project(':react-native-reanimated')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules

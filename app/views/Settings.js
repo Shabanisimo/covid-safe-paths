@@ -2,7 +2,8 @@ import styled, { css } from '@emotion/native';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BackHandler, ScrollView, View } from 'react-native';
-import ZendeskSupport from 'react-native-zendesk-support';
+// import ZendeskSupport from 'react-native-zendesk-support';
+import * as RNZendesk from 'rn-zendesk';
 
 import checkmarkIcon from '../assets/svgs/checkmarkIcon';
 import languagesIcon from '../assets/svgs/languagesIcon';
@@ -47,8 +48,12 @@ export const SettingsScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    ZendeskSupport.initialize(config);
-    ZendeskSupport.setupIdentity(identity);
+    // ZendeskSupport.initialize(config);
+    // ZendeskSupport.setupIdentity(identity);
+
+    RNZendesk.initialize(config);
+
+    RNZendesk.identifyAnonymous(identity.name, identity.email);
   });
 
   useEffect(() => {
@@ -145,7 +150,14 @@ export const SettingsScreen = ({ navigation }) => {
             label={'Zendesk test'}
             description={'Meow'}
             onPress={() => {
-              ZendeskSupport.showHelpCenter();
+              // ZendeskSupport.showHelpCenter();
+              RNZendesk.showHelpCenter({
+                subject:
+                  'Title for any new ticket created by the user inside helpcenter',
+                tags: [],
+                groupType: 1, // 0: default, 1: sections, 2: categories
+                groupIds: [360008767331], // array of categories/sections id
+              });
             }}
             last
           />

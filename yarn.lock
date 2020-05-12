@@ -7988,11 +7988,6 @@ react-native-webview@^8.1.2:
     invariant "2.2.4"
     rnpm-plugin-windows "^0.5.1-0"
 
-react-native-zendesk-support@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/react-native-zendesk-support/-/react-native-zendesk-support-1.0.9.tgz#d0e229b245e1a8d1d46d269c01e2c45c0d946e52"
-  integrity sha512-EFd9I3B6GzV2BkPV3/xPbUu4A8vnxqwPD+uOs+Ez4iB/t/asDDdE4v3dIEOEbIvtRwhVlkjp7vDkS2Q0nctXzg==
-
 react-native-zip-archive@^5.0.1:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/react-native-zip-archive/-/react-native-zip-archive-5.0.2.tgz#cfa2aa8c97dd4ccb2dd8c99812ec7d9e20bf7549"
@@ -8409,6 +8404,11 @@ rn-fetch-blob@^0.12.0:
   dependencies:
     base-64 "0.1.0"
     glob "7.0.6"
+
+rn-zendesk@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/rn-zendesk/-/rn-zendesk-1.0.4.tgz#7dc7fb9b51f2030eca80ef2ee184d2aef29aa16e"
+  integrity sha512-0dSN5sta/DgXEq2ZzVrRburWz6pq0gMNMN5UoiRMrO+HE+w8+IO/CO9H4a5t24oLymABe30T/MYdSEiJePF88g==
 
 rnpm-plugin-windows@^0.5.1-0:
   version "0.5.1-0"
